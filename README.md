@@ -23,10 +23,10 @@ Infrastructure composée de serveurs virtualisés sur un ESX, composée de
 * Mise en place de Heartbeat et HAproxy
 * Contribution à la production de schémas
 
-## Sylvan () - Chef de projet
+## Sylvan (pas de compte) - Chef de projet
 * Installation de MySQL
 * Contribution à la production de schémas
 
-## Florian ()
+## Florian (dakooootaa)
 * Installation de MySQL
 * Contribution à la production de schémas
