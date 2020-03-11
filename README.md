@@ -6,6 +6,8 @@ Infrastructure composée de serveurs virtualisés sur un ESX, composée de
 * Deux serveurs de gestion de charge (Heartbeat et HAproxy)
 * Un serveur de déploiement (Ansible et Nagios)
 
+***
+
 ## Adrien (dairne)
 * Développement et adaptation du script Python de détection d'erreurs
 * Installation des postes de travail du groupe (Kubuntu)
