@@ -1,0 +1,6 @@
+---
+_ssh_keys_distribution:
+  - host: '172.16.29.250'
+    keys:
+      - user: 'client3-ansible'
+        key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgVLXFsqJCemmvnlp2BNoTtyHq1XOrett3rLwHr0eSbs+EmmUb/6s9aHhsiu/nPW3tLMWH8XEyBYK5USW6sOd/HZ6YPG1w4mk70Zp/uvCXiSmPwam50KanzOjeMxkeeETYXvQeqQJLNm8f44d9IovoAyWZcK98BpUXCeHWLQjJDvlmqzrLG4wz4A8SfN6ki1EroBGAmKap2dFmbxjPLkOPGsiZyZXttbmr152kZnRFEQMMoeWn/tdR8nHkXpPCdEPscbRRgv+49DJg9aNDPevWR5eimqYf0/IYxdWuVu/ODmD0fJmokZaVMohwnMqCMdFFgSuVpjCfS6OWnLcw03jx client3-ansible@ubuntu'
