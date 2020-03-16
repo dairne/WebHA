@@ -1,0 +1,4 @@
+---
+users_ssh_key_distribution:
+  - 'client3-ansible'
+...
