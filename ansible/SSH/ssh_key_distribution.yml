@@ -1,0 +1,47 @@
+---
+- hosts: serveurweb
+  tasks:
+    - name: Recherche et sauvegarde de la clé publique par utilisateur en local
+      command: "ssh-keyscan {{ item }}"	#affiche la clé de l'utilisateur
+      register: "host_keys_hostname"	# enregistrement de  la clef dans une variable
+      changed_when: false
+      with_items: "{{ groups['all'] }}" # on effectue cette tâche pour tous les groupes
+      delegate_to: localhost
+      become: false
+
+    - name: On envoie notre clef publique (serveur ansible) vers hôte distant
+      template:
+        src: "/etc/ansible/roles/ssh/templates/ssh-hosts.j2"
+        dest: "/etc/ssh/ssh_known_hosts" # Cette tâche permet au serveur distant 
+      become: true			 # reconnaisse le client
+
+    - name: Récupération du chemin pour accéder à la  clef publique/utilisateur
+      command: "cat /home/{{ item }}/.ssh/id_rsa.pub"
+      register: "_ssh_pub_key"
+      become: true
+      changed_when: false
+      with_items: '{{ users_ssh_key_distribution }}' # On effecute cette tache pour chaque utilistateur
+
+    - name: Génération des clefs privée/publique en local
+      template:
+        src: "/etc/ansible/roles/ssh/templates/ssh_keys_distribution.yml.j2"
+        dest: "ssh_keys_distribution.yml" # cette clef est stockée dans /etc/ansible/
+      become: false
+      run_once: true
+      delegate_to: localhost
+
+- hosts: serveurweb
+  vars_files:
+    - ssh_keys_distribution.yml	# A partir de la clef générée précédemment 
+  tasks:
+    - name: distribution des clefs vers les hôtes distants
+      authorized_key:
+        user: "{{ item[1]['user'] }}"
+        key: "{{ item[1]['key'] }}"
+        state: "present"
+      become: true
+      with_subelements:
+        - "{{ _ssh_keys_distribution }}"
+        - keys
+      #when: inventory_hostname != item[0]['host']
+...
