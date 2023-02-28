@@ -17,7 +17,7 @@ Infrastructure composée de serveurs virtualisés sur un ESX, composée de
 * Mise en place de conteneurs Docker pour Apache2
 * Contribution à la production de schémas
 
-## Mickaël (korwagen)
+## 
 * Mise en place de Ansible pour le déploiement de l'infrastructure
 * Contribution à la production de schémas
 
